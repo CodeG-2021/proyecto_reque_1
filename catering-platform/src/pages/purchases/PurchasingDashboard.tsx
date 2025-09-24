@@ -54,47 +54,47 @@ export const PurchasingDashboardPage: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-primary">Purchasing & inventory</h1>
+          <h1 className="text-2xl font-semibold text-primary">Compras e inventario</h1>
           <p className="text-sm text-neutral-500">
-            Track stock levels, manage suppliers, and generate shopping lists aligned with upcoming menus.
+            Controla existencias, gestiona proveedores y genera listas de compras alineadas con los menús próximos.
           </p>
         </div>
         <Button className="inline-flex items-center gap-2" onClick={() => setSupplierModalOpen(true)}>
           <PlusIcon className="h-5 w-5" />
-          Add supplier
+          Agregar proveedor
         </Button>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
         <Card className="space-y-3">
-          <h2 className="text-lg font-semibold text-primary">Inventory dashboard</h2>
+          <h2 className="text-lg font-semibold text-primary">Resumen de inventario</h2>
           <div className="rounded-2xl bg-neutral-200/40 p-4">
-            <p className="text-xs uppercase tracking-wide text-neutral-500">Total items tracked</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-500">Artículos registrados</p>
             <p className="mt-1 text-2xl font-semibold text-primary">{inventorySummary.totalItems}</p>
           </div>
           <div className="rounded-2xl bg-neutral-200/40 p-4">
-            <p className="text-xs uppercase tracking-wide text-neutral-500">Below minimum alert</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-500">Alertas por debajo del mínimo</p>
             <p className="mt-1 text-2xl font-semibold text-primary">{inventorySummary.underMinimum}</p>
           </div>
           <div className="rounded-2xl bg-neutral-200/40 p-4">
-            <p className="text-xs uppercase tracking-wide text-neutral-500">Last update</p>
+            <p className="text-xs uppercase tracking-wide text-neutral-500">Última actualización</p>
             <p className="mt-1 text-sm font-semibold text-primary">{inventorySummary.lastUpdated}</p>
           </div>
         </Card>
 
         <Card className="space-y-3 lg:col-span-2">
-          <h2 className="text-lg font-semibold text-primary">Shopping list</h2>
+          <h2 className="text-lg font-semibold text-primary">Lista de compras</h2>
           <p className="text-sm text-neutral-500">
-            Automatically generated from menus and upcoming events. Share with your purchasing team or export as needed.
+            Generada automáticamente a partir de los menús y eventos próximos. Compártela con el equipo de compras o expórtala según necesites.
           </p>
           <div className="grid gap-3 md:grid-cols-2">
             {shoppingList.map((item) => (
               <div key={item.name} className="flex items-center justify-between rounded-2xl bg-neutral-200/40 px-4 py-3">
                 <div>
                   <p className="text-sm font-semibold text-primary">{item.name}</p>
-                  <p className="text-xs text-neutral-500">Required for {item.quantity} event(s)</p>
+                  <p className="text-xs text-neutral-500">Requerido para {item.quantity} evento(s)</p>
                 </div>
-                <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-primary">Priority</span>
+                <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-primary">Prioridad</span>
               </div>
             ))}
           </div>
@@ -102,8 +102,8 @@ export const PurchasingDashboardPage: React.FC = () => {
       </div>
 
       <Card className="space-y-4">
-        <h2 className="text-lg font-semibold text-primary">Supplier network</h2>
-        <p className="text-sm text-neutral-500">Maintain reliable contacts for ingredients, rentals, and complementary services.</p>
+        <h2 className="text-lg font-semibold text-primary">Red de proveedores</h2>
+        <p className="text-sm text-neutral-500">Mantén contactos confiables para ingredientes, alquileres y servicios complementarios.</p>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {suppliers.map((supplier) => (
             <div key={supplier.id} className="rounded-2xl border border-neutral-200/70 bg-white/90 p-4 shadow-sm">
@@ -122,47 +122,47 @@ export const PurchasingDashboardPage: React.FC = () => {
       </Card>
 
       <Card className="space-y-4">
-        <h2 className="text-lg font-semibold text-primary">Inventory alerts</h2>
+        <h2 className="text-lg font-semibold text-primary">Alertas de inventario</h2>
         {lowStockItems.length ? (
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {lowStockItems.map((item) => (
               <div key={item.id} className="rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-600">
                 <p className="font-semibold">{item.name}</p>
                 <p className="text-xs">
-                  {item.quantity} {item.unit} remaining &middot; minimum {item.minimum}
+                  {item.quantity} {item.unit} restantes &middot; mínimo {item.minimum}
                 </p>
-                <p className="text-xs text-red-400">Last updated {item.lastUpdated}</p>
+                <p className="text-xs text-red-400">Última actualización {item.lastUpdated}</p>
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-sm text-neutral-500">All inventory levels look healthy.</p>
+          <p className="text-sm text-neutral-500">Los niveles de inventario se encuentran saludables.</p>
         )}
       </Card>
 
       <Modal
         open={supplierModalOpen}
         onClose={() => setSupplierModalOpen(false)}
-        title="Add supplier"
-        description="Keep supplier information handy for quick reorders and negotiations."
-        primaryAction={{ label: 'Save supplier', onClick: handleAddSupplier }}
-        secondaryAction={{ label: 'Cancel', onClick: () => setSupplierModalOpen(false) }}
+        title="Agregar proveedor"
+        description="Mantén la información de tus proveedores a la mano para reposiciones y negociaciones rápidas."
+        primaryAction={{ label: 'Guardar proveedor', onClick: handleAddSupplier }}
+        secondaryAction={{ label: 'Cancelar', onClick: () => setSupplierModalOpen(false) }}
       >
         <InputField
-          label="Supplier name"
+          label="Nombre del proveedor"
           placeholder="Gourmet Provisions"
           value={supplierForm.name}
           onChange={(event) => setSupplierForm((prev) => ({ ...prev, name: event.target.value }))}
         />
         <InputField
-          label="Contact details"
+          label="Datos de contacto"
           placeholder="sales@gourmetprovisions.com"
           value={supplierForm.contact}
           onChange={(event) => setSupplierForm((prev) => ({ ...prev, contact: event.target.value }))}
         />
         <TextAreaField
-          label="Products / Services"
-          placeholder="List main products separated by commas"
+          label="Productos / Servicios"
+          placeholder="Lista los productos principales separados por comas"
           value={supplierForm.products}
           onChange={(event) => setSupplierForm((prev) => ({ ...prev, products: event.target.value }))}
         />

@@ -23,23 +23,23 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Dashboard', to: '/dashboard', icon: Squares2X2Icon, roles: ['administrator'] },
-  { label: 'User Management', to: '/users', icon: UserGroupIcon, roles: ['administrator'] },
-  { label: 'Events', to: '/events', icon: CalendarDaysIcon, roles: ['coordinator', 'administrator'] },
-  { label: 'Menus & Recipes', to: '/menus', icon: ClipboardDocumentCheckIcon, roles: ['coordinator', 'chef'] },
-  { label: 'Purchases & Inventory', to: '/purchases', icon: ShoppingCartIcon, roles: ['purchasing', 'administrator'] },
-  { label: 'Financial Reports', to: '/reports', icon: DocumentChartBarIcon, roles: ['administrator'] },
-  { label: 'Client Services', to: '/client/catalog', icon: HomeModernIcon, roles: ['client', 'administrator'] },
-  { label: 'Reservations', to: '/client/reservations', icon: BanknotesIcon, roles: ['client', 'administrator'] },
-  { label: 'Notifications', to: '/notifications', icon: BellAlertIcon, roles: ['administrator', 'coordinator', 'purchasing', 'chef', 'client'] },
+  { label: 'Panel', to: '/dashboard', icon: Squares2X2Icon, roles: ['administrator'] },
+  { label: 'Gestión de usuarios', to: '/users', icon: UserGroupIcon, roles: ['administrator'] },
+  { label: 'Eventos', to: '/events', icon: CalendarDaysIcon, roles: ['coordinator', 'administrator'] },
+  { label: 'Menús y recetas', to: '/menus', icon: ClipboardDocumentCheckIcon, roles: ['coordinator', 'chef'] },
+  { label: 'Compras e inventario', to: '/purchases', icon: ShoppingCartIcon, roles: ['purchasing', 'administrator'] },
+  { label: 'Reportes financieros', to: '/reports', icon: DocumentChartBarIcon, roles: ['administrator'] },
+  { label: 'Servicios para clientes', to: '/client/catalog', icon: HomeModernIcon, roles: ['client', 'administrator'] },
+  { label: 'Reservaciones', to: '/client/reservations', icon: BanknotesIcon, roles: ['client', 'administrator'] },
+  { label: 'Notificaciones', to: '/notifications', icon: BellAlertIcon, roles: ['administrator', 'coordinator', 'purchasing', 'chef', 'client'] },
 ];
 
 const roleTitles: Record<UserRole, string> = {
-  administrator: 'Administrator',
-  coordinator: 'Event Coordinator',
-  chef: 'Chef',
-  purchasing: 'Purchasing Manager',
-  client: 'Client Portal',
+  administrator: 'Administración',
+  coordinator: 'Coordinación de eventos',
+  chef: 'Cocina',
+  purchasing: 'Compras',
+  client: 'Portal de clientes',
 };
 
 export const Sidebar: React.FC = () => {
@@ -51,7 +51,7 @@ export const Sidebar: React.FC = () => {
   return (
     <aside className="hidden w-72 flex-col gap-6 border-r border-white/40 bg-white/80 px-6 py-8 shadow-card lg:flex">
       <div>
-        <span className="text-xs uppercase tracking-widest text-primary/80">Catering Platform</span>
+        <span className="text-xs uppercase tracking-widest text-primary/80">Plataforma de catering</span>
         <h2 className="mt-1 text-xl font-semibold text-primary">{roleTitles[user.role]}</h2>
       </div>
 

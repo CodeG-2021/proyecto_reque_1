@@ -70,8 +70,8 @@ export const MenuManagementPage: React.FC = () => {
         ...prev.ingredients,
         {
           id: crypto.randomUUID(),
-          name: `Ingredient ${prev.ingredients.length + 1}`,
-          unit: 'unit',
+          name: `Ingrediente ${prev.ingredients.length + 1}`,
+          unit: 'unidad',
           quantity: 1,
           cost: 1.5,
         },
@@ -94,16 +94,16 @@ export const MenuManagementPage: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-primary">Menus & recipes</h1>
+          <h1 className="text-2xl font-semibold text-primary">Menús y recetas</h1>
           <p className="text-sm text-neutral-500">
-            Design culinary experiences, calculate costs, and automatically scale ingredients per guest count.
+            Diseña experiencias culinarias, calcula costos y escala ingredientes automáticamente según el número de invitados.
           </p>
         </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
         <Card className="space-y-4">
-          <h2 className="text-lg font-semibold text-primary">Available menus</h2>
+          <h2 className="text-lg font-semibold text-primary">Menús disponibles</h2>
           <div className="space-y-3">
             {menus.map((menu) => (
               <button
@@ -122,21 +122,21 @@ export const MenuManagementPage: React.FC = () => {
             ))}
           </div>
           <div className="rounded-2xl bg-neutral-200/40 p-4">
-            <h3 className="text-sm font-semibold text-primary">Create new menu</h3>
+            <h3 className="text-sm font-semibold text-primary">Crear nuevo menú</h3>
             <InputField
-              label="Menu name"
-              placeholder="Seasonal showcase"
+              label="Nombre del menú"
+              placeholder="Selección de temporada"
               value={newMenuName}
               onChange={(event) => setNewMenuName(event.target.value)}
             />
             <InputField
-              label="Estimated price per guest"
+              label="Precio estimado por invitado"
               type="number"
               value={newMenuPrice}
               onChange={(event) => setNewMenuPrice(Number(event.target.value))}
             />
             <Button onClick={handleAddMenu} className="mt-3 w-full" variant="secondary">
-              Add menu
+              Agregar menú
             </Button>
           </div>
         </Card>
@@ -146,24 +146,26 @@ export const MenuManagementPage: React.FC = () => {
             <div>
               <h2 className="text-lg font-semibold text-primary">{selectedMenu?.name}</h2>
               <p className="text-sm text-neutral-500">
-                {selectedMenu?.dishes.length ? 'Select a dish to edit or add new recipes.' : 'Start by adding a new recipe.'}
+                {selectedMenu?.dishes.length
+                  ? 'Selecciona un platillo para editar o agrega nuevas recetas.'
+                  : 'Comienza agregando una nueva receta.'}
               </p>
             </div>
             <Button className="inline-flex items-center gap-2" onClick={handleAddRecipe}>
               <PlusIcon className="h-5 w-5" />
-              Save recipe
+              Guardar receta
             </Button>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             <InputField
-              label="Recipe name"
-              placeholder="Signature entrée"
+              label="Nombre de la receta"
+              placeholder="Entrada insignia"
               value={recipeForm.name}
               onChange={(event) => setRecipeForm((prev) => ({ ...prev, name: event.target.value }))}
             />
             <InputField
-              label="Portion size"
+              label="Porciones"
               type="number"
               min={1}
               value={recipeForm.portionSize}
@@ -173,9 +175,9 @@ export const MenuManagementPage: React.FC = () => {
 
           <div className="rounded-2xl border border-dashed border-primary/30 p-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-primary">Ingredients</h3>
+              <h3 className="text-sm font-semibold text-primary">Ingredientes</h3>
               <Button variant="secondary" size="sm" className="inline-flex items-center gap-1" onClick={handleAddIngredient}>
-                <PlusIcon className="h-4 w-4" /> Add ingredient
+                <PlusIcon className="h-4 w-4" /> Agregar ingrediente
               </Button>
             </div>
             <div className="mt-4 space-y-4">
@@ -183,7 +185,7 @@ export const MenuManagementPage: React.FC = () => {
                 recipeForm.ingredients.map((ingredient, index) => (
                   <div key={ingredient.id} className="grid gap-3 md:grid-cols-4">
                     <InputField
-                      label="Name"
+                      label="Nombre"
                       value={ingredient.name}
                       onChange={(event) =>
                         setRecipeForm((prev) => {
@@ -194,7 +196,7 @@ export const MenuManagementPage: React.FC = () => {
                       }
                     />
                     <InputField
-                      label="Quantity"
+                      label="Cantidad"
                       type="number"
                       value={ingredient.quantity}
                       onChange={(event) =>
@@ -206,7 +208,7 @@ export const MenuManagementPage: React.FC = () => {
                       }
                     />
                     <InputField
-                      label="Unit"
+                      label="Unidad"
                       value={ingredient.unit}
                       onChange={(event) =>
                         setRecipeForm((prev) => {
@@ -217,7 +219,7 @@ export const MenuManagementPage: React.FC = () => {
                       }
                     />
                     <InputField
-                      label="Cost"
+                      label="Costo"
                       type="number"
                       value={ingredient.cost}
                       onChange={(event) =>
@@ -231,7 +233,7 @@ export const MenuManagementPage: React.FC = () => {
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-neutral-500">No ingredients yet. Add your first ingredient above.</p>
+                <p className="text-sm text-neutral-500">Aún no hay ingredientes. Agrega el primero desde el botón superior.</p>
               )}
             </div>
           </div>
@@ -239,13 +241,13 @@ export const MenuManagementPage: React.FC = () => {
           <div className="rounded-2xl bg-neutral-200/40 p-5">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <h3 className="text-sm font-semibold text-primary">Automatic scaling</h3>
+                <h3 className="text-sm font-semibold text-primary">Escalado automático</h3>
                 <p className="text-xs text-neutral-500">
-                  Adjust the number of guests to recalculate ingredient quantities instantly.
+                  Ajusta la cantidad de invitados para recalcular al instante las porciones de cada ingrediente.
                 </p>
               </div>
               <InputField
-                label="Guests"
+                label="Invitados"
                 type="number"
                 min={1}
                 value={guestCount}
@@ -268,7 +270,7 @@ export const MenuManagementPage: React.FC = () => {
                 ))
               ) : (
                 <p className="text-sm text-neutral-500">
-                  Select or create a recipe with ingredients to enable automatic scaling.
+                  Selecciona o crea una receta con ingredientes para habilitar el escalado automático.
                 </p>
               )}
             </div>

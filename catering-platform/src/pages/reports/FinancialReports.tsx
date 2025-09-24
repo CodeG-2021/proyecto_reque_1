@@ -37,19 +37,19 @@ export const FinancialReportsPage: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-primary">Financial performance</h1>
+          <h1 className="text-2xl font-semibold text-primary">Resultados financieros</h1>
           <p className="text-sm text-neutral-500">
-            Analyze revenue, expenses, and margins per event. Export data to share insights with stakeholders.
+            Analiza ingresos, gastos y márgenes por evento. Exporta la información para compartirla con los equipos interesados.
           </p>
         </div>
         <div className="flex items-center gap-3">
           <Button variant="secondary" className="inline-flex items-center gap-2">
             <ArrowDownTrayIcon className="h-5 w-5" />
-            Export Excel
+            Exportar Excel
           </Button>
           <Button className="inline-flex items-center gap-2">
             <DocumentArrowDownIcon className="h-5 w-5" />
-            Export PDF
+            Exportar PDF
           </Button>
         </div>
       </div>
@@ -57,30 +57,30 @@ export const FinancialReportsPage: React.FC = () => {
       <Card>
         <div className="grid gap-4 md:grid-cols-4">
           <SelectField
-            label="Client"
+            label="Cliente"
             value={filters.client}
             onChange={(event) => setFilters((prev) => ({ ...prev, client: event.target.value }))}
-            options={[{ value: '', label: 'All clients' }, ...clients.map((client) => ({ value: client, label: client }))]}
+            options={[{ value: '', label: 'Todos los clientes' }, ...clients.map((client) => ({ value: client, label: client }))]}
           />
           <InputField
-            label="From"
+            label="Desde"
             type="date"
             value={filters.from}
             onChange={(event) => setFilters((prev) => ({ ...prev, from: event.target.value }))}
           />
           <InputField
-            label="To"
+            label="Hasta"
             type="date"
             value={filters.to}
             onChange={(event) => setFilters((prev) => ({ ...prev, to: event.target.value }))}
           />
           <div className="rounded-2xl bg-neutral-200/40 p-4 text-sm text-neutral-500">
-            <p>Total revenue:</p>
+            <p>Total de ingresos:</p>
             <p className="text-lg font-semibold text-primary">
               ${totals.revenue.toLocaleString()}
             </p>
             <p className="mt-1 text-xs text-neutral-500">
-              Expenses ${totals.expenses.toLocaleString()} &middot; Profit ${totals.profit.toLocaleString()}
+              Gastos ${totals.expenses.toLocaleString()} &middot; Utilidad ${totals.profit.toLocaleString()}
             </p>
           </div>
         </div>
@@ -89,22 +89,22 @@ export const FinancialReportsPage: React.FC = () => {
           <SimpleTable
             data={filteredReports}
             columns={[
-              { key: 'event', header: 'Event' },
-              { key: 'client', header: 'Client' },
-              { key: 'date', header: 'Date' },
+              { key: 'event', header: 'Evento' },
+              { key: 'client', header: 'Cliente' },
+              { key: 'date', header: 'Fecha' },
               {
                 key: 'revenue',
-                header: 'Revenue',
+                header: 'Ingresos',
                 render: (item) => <span>${item.revenue.toLocaleString()}</span>,
               },
               {
                 key: 'expenses',
-                header: 'Expenses',
+                header: 'Gastos',
                 render: (item) => <span>${item.expenses.toLocaleString()}</span>,
               },
               {
                 key: 'profit',
-                header: 'Profit margin',
+                header: 'Utilidad',
                 render: (item) => (
                   <span className={item.profit >= 0 ? 'text-primary' : 'text-red-500'}>${item.profit.toLocaleString()}</span>
                 ),

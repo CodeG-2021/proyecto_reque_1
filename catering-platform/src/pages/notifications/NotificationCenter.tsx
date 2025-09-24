@@ -6,27 +6,34 @@ import { useNotifications } from '../../hooks/useNotifications';
 
 export const NotificationCenterPage: React.FC = () => {
   const { notifications, preferences, markAsRead, togglePreference } = useNotifications();
+  const preferenceLabels: Record<string, string> = {
+    events: 'eventos',
+    inventory: 'inventario',
+    reservations: 'reservaciones',
+    finance: 'finanzas',
+    system: 'sistema',
+  };
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold text-primary">Notifications</h1>
+          <h1 className="text-2xl font-semibold text-primary">Notificaciones</h1>
           <p className="text-sm text-neutral-500">
-            Stay informed about event updates, inventory alerts, financial milestones, and client reservations in real time.
+            Mantente al tanto de cambios en eventos, alertas de inventario, hitos financieros y reservaciones en tiempo real.
           </p>
         </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
         <Card className="space-y-4">
-          <h2 className="text-lg font-semibold text-primary">Preferences</h2>
-          <p className="text-sm text-neutral-500">Choose which alerts you receive. Preferences apply across email and in-app.</p>
+          <h2 className="text-lg font-semibold text-primary">Preferencias</h2>
+          <p className="text-sm text-neutral-500">Elige qué alertas deseas recibir. Se aplican tanto por correo como dentro de la aplicación.</p>
           <div className="space-y-3">
             {Object.entries(preferences).map(([category, enabled]) => (
               <CheckboxField
                 key={category}
-                label={`Notify about ${category}`}
+                label={`Notificar sobre ${preferenceLabels[category] ?? category}`}
                 checked={enabled}
                 onChange={() => togglePreference(category as keyof typeof preferences)}
               />
@@ -35,7 +42,7 @@ export const NotificationCenterPage: React.FC = () => {
         </Card>
 
         <Card className="lg:col-span-2 space-y-4">
-          <h2 className="text-lg font-semibold text-primary">Recent updates</h2>
+          <h2 className="text-lg font-semibold text-primary">Actualizaciones recientes</h2>
           <div className="space-y-3">
             {notifications.map((notification) => (
               <div
@@ -53,7 +60,7 @@ export const NotificationCenterPage: React.FC = () => {
                 </div>
                 {!notification.read && (
                   <Button variant="secondary" size="sm" onClick={() => markAsRead(notification.id)} className="inline-flex items-center gap-1">
-                    <CheckIcon className="h-4 w-4" /> Mark as read
+                    <CheckIcon className="h-4 w-4" /> Marcar como leída
                   </Button>
                 )}
               </div>

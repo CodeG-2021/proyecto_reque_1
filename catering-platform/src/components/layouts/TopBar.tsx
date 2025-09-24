@@ -24,12 +24,12 @@ export const TopBar: React.FC<TopBarProps> = ({ onToggleSidebar }) => {
           type="button"
           className="inline-flex items-center justify-center rounded-xl p-2 text-primary transition hover:bg-primary/10 lg:hidden"
           onClick={() => setMobileMenuOpen(true)}
-          aria-label="Open menu"
+          aria-label="Abrir menú"
         >
           <Bars3Icon className="h-6 w-6" />
         </button>
         <div>
-          <p className="text-xs uppercase tracking-wider text-neutral-500">Welcome back</p>
+          <p className="text-xs uppercase tracking-wider text-neutral-500">Bienvenido de nuevo</p>
           <h1 className="text-lg font-semibold text-primary">{user.name}</h1>
         </div>
       </div>
@@ -48,7 +48,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onToggleSidebar }) => {
         </Link>
         <Button variant="ghost" className="hidden items-center gap-2 text-sm font-semibold text-primary sm:flex" onClick={logout}>
           <PowerIcon className="h-5 w-5" />
-          Sign out
+          Cerrar sesión
         </Button>
       </div>
 

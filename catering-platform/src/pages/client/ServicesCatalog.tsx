@@ -5,9 +5,9 @@ import { mockServicesCatalog } from '../../data/mockData';
 export const ServicesCatalogPage: React.FC = () => (
   <div className="space-y-6">
     <div className="text-center">
-      <h1 className="text-2xl font-semibold text-primary">Catering services catalog</h1>
+      <h1 className="text-2xl font-semibold text-primary">Catálogo de servicios de catering</h1>
       <p className="mt-2 text-sm text-neutral-500">
-        Explore curated packages built for corporate gatherings, weddings, and bespoke celebrations.
+        Explora paquetes diseñados para eventos corporativos, bodas y celebraciones a medida.
       </p>
     </div>
 
@@ -21,7 +21,7 @@ export const ServicesCatalogPage: React.FC = () => (
               {service.priceRange}
             </p>
           </div>
-          <Button className="w-full">Request quotation</Button>
+          <Button className="w-full">Solicitar cotización</Button>
         </Card>
       ))}
     </div>

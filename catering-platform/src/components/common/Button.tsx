@@ -45,7 +45,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button className={styles} disabled={disabled || isLoading} {...props}>
-      {isLoading ? 'Processing...' : children}
+      {isLoading ? 'Procesando…' : children}
     </button>
   );
 };

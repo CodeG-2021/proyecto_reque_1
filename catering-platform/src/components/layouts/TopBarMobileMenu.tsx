@@ -31,15 +31,15 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Dashboard', to: '/dashboard', icon: Squares2X2Icon, roles: ['administrator'] },
-  { label: 'User Management', to: '/users', icon: UserGroupIcon, roles: ['administrator'] },
-  { label: 'Events', to: '/events', icon: CalendarDaysIcon, roles: ['administrator', 'coordinator'] },
-  { label: 'Menus & Recipes', to: '/menus', icon: ClipboardDocumentCheckIcon, roles: ['coordinator', 'chef'] },
-  { label: 'Purchases & Inventory', to: '/purchases', icon: ShoppingCartIcon, roles: ['purchasing', 'administrator'] },
-  { label: 'Reports', to: '/reports', icon: DocumentChartBarIcon, roles: ['administrator'] },
-  { label: 'Services', to: '/client/catalog', icon: HomeModernIcon, roles: ['client', 'administrator'] },
-  { label: 'Reservations', to: '/client/reservations', icon: BanknotesIcon, roles: ['client', 'administrator'] },
-  { label: 'Notifications', to: '/notifications', icon: BellAlertIcon, roles: ['administrator', 'coordinator', 'purchasing', 'chef', 'client'] },
+  { label: 'Panel', to: '/dashboard', icon: Squares2X2Icon, roles: ['administrator'] },
+  { label: 'Gestión de usuarios', to: '/users', icon: UserGroupIcon, roles: ['administrator'] },
+  { label: 'Eventos', to: '/events', icon: CalendarDaysIcon, roles: ['administrator', 'coordinator'] },
+  { label: 'Menús y recetas', to: '/menus', icon: ClipboardDocumentCheckIcon, roles: ['coordinator', 'chef'] },
+  { label: 'Compras e inventario', to: '/purchases', icon: ShoppingCartIcon, roles: ['purchasing', 'administrator'] },
+  { label: 'Reportes', to: '/reports', icon: DocumentChartBarIcon, roles: ['administrator'] },
+  { label: 'Servicios', to: '/client/catalog', icon: HomeModernIcon, roles: ['client', 'administrator'] },
+  { label: 'Reservaciones', to: '/client/reservations', icon: BanknotesIcon, roles: ['client', 'administrator'] },
+  { label: 'Notificaciones', to: '/notifications', icon: BellAlertIcon, roles: ['administrator', 'coordinator', 'purchasing', 'chef', 'client'] },
 ];
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({ open, onClose, onLogout }) => {
@@ -74,7 +74,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ open, onClose, onLogout 
             leaveTo="translate-x-full"
           >
             <Dialog.Panel className="ml-auto flex h-full w-80 flex-col gap-4 overflow-y-auto bg-white p-6 shadow-xl">
-              <Dialog.Title className="text-lg font-semibold text-primary">Menu</Dialog.Title>
+              <Dialog.Title className="text-lg font-semibold text-primary">Menú</Dialog.Title>
               <div className="flex flex-col gap-2">
                 {navItems
                   .filter((item) => item.roles.includes(user.role))
@@ -94,7 +94,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ open, onClose, onLogout 
                   ))}
               </div>
               <Button variant="primary" onClick={onLogout}>
-                Sign out
+                Cerrar sesión
               </Button>
             </Dialog.Panel>
           </Transition.Child>
